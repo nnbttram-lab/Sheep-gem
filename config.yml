@@ -1,0 +1,135 @@
+backend:
+  name: github
+  repo: nnbttram-lab/Sheep-gem
+  branch: main
+
+# Lets you upload images through the CMS UI. Uploaded files land in images/uploads
+# and are committed to the repo alongside your content changes.
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "site_content"
+    label: "Site Content"
+    files:
+      - name: "main"
+        label: "Sheep Gem — Landing Page"
+        file: "content/site-content.json"
+        fields:
+          - label: "Site"
+            name: "site"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Logo Text", name: "logoText", widget: "string" }
+              - { label: "Copyright Year", name: "year", widget: "number", value_type: "int" }
+
+          - label: "Navigation"
+            name: "nav"
+            widget: "list"
+            summary: "{{label}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Link (e.g. #products)", name: "href", widget: "string" }
+
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow (small text above headline)", name: "eyebrow", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+              - { label: "Primary Button Text", name: "ctaPrimaryText", widget: "string" }
+              - { label: "Primary Button Link", name: "ctaPrimaryHref", widget: "string" }
+              - { label: "Secondary Button Text", name: "ctaSecondaryText", widget: "string" }
+              - { label: "Secondary Button Link", name: "ctaSecondaryHref", widget: "string" }
+              - { label: "Image Path", name: "image", widget: "string", required: false }
+
+          - label: "About / Philosophy"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                summary: "{{value}} — {{label}}"
+                fields:
+                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+
+          - label: "Shop by Intention (Bagua Categories)"
+            name: "intentions"
+            widget: "list"
+            summary: "{{name}} ({{stone}})"
+            fields:
+              - { label: "ID (used to link products — don't change casually)", name: "id", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Stone", name: "stone", widget: "string" }
+              - { label: "Element", name: "element", widget: "string" }
+              - { label: "Bagua Area", name: "baguaArea", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Accent Color", name: "color", widget: "color", required: false }
+
+          - label: "Featured Products"
+            name: "products"
+            widget: "list"
+            summary: "{{name}} — ${{price}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - label: "Intention"
+                name: "intention"
+                widget: "select"
+                options: ["wealth", "love", "protection", "career", "health", "wisdom"]
+              - { label: "Price (USD)", name: "price", widget: "number", value_type: "int" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image Path", name: "image", widget: "string", required: false }
+
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            summary: "{{author}}"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Author", name: "author", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+
+          - label: "Newsletter Signup"
+            name: "newsletter"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+              - { label: "Button Text", name: "ctaText", widget: "string" }
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Address", name: "address", widget: "string" }
+              - label: "Social Links"
+                name: "social"
+                widget: "list"
+                summary: "{{label}}"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                summary: "{{label}}"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+              - { label: "Copyright Text", name: "copyright", widget: "string" }
