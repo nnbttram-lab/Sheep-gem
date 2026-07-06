@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheep Gem — Content Editor</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<header class="admin-header">
+  <div class="admin-header-inner">
+    <h1>Sheep Gem — Content Editor</h1>
+    <div class="admin-actions">
+      <a class="btn-link" href="index.html" target="_blank">Open site ↗</a>
+      <button id="download-btn" class="btn-download">Download updated site-content.js</button>
+    </div>
+  </div>
+</header>
+
+<main class="admin-layout">
+  <section class="admin-form-col">
+    <p class="admin-note">
+      Edit any field. The preview on the right updates as you type. When you're happy
+      with it, click <strong>Download updated site-content.js</strong> and replace the
+      file at <code>content/site-content.js</code> with the downloaded one.
+      <br><br>
+      <strong>Note:</strong> this is an offline draft tool only — it does not update your
+      live site. Once your live CMS is set up, edit content at <code>yoursite.com/admin</code>
+      instead (see <code>LIVE_CMS_SETUP.md</code>).
+    </p>
+    <form id="content-form"></form>
+  </section>
+
+  <section class="admin-preview-col">
+    <div class="preview-toolbar">
+      <span class="preview-label">Live preview</span>
+      <div class="preview-device-toggle">
+        <button type="button" class="device-btn active" data-width="100%">Desktop</button>
+        <button type="button" class="device-btn" data-width="390px">Mobile</button>
+      </div>
+    </div>
+    <div class="preview-frame-wrap" id="preview-frame-wrap">
+      <iframe id="preview-frame" src="index.html" title="Site preview"></iframe>
+    </div>
+  </section>
+</main>
+
+<script src="content/site-content.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
